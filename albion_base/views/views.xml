@@ -1,0 +1,197 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="albion_base.char_form">
+            <field name="name">albion_base_char_form</field>
+            <field name="model">albion_base.character</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h1 class="d-flex">
+                        <field name="name" placeholder="Nome Personaggio"/>
+                    </h1>
+                    <group>
+                        <field name="gold" readonly="1"/>
+                        <field name="user_id" groups="base.user_admin"/>
+                        <button name="update_gold" string="Aggiorna Sesterzi" type="object" class="btn-primary"
+                                groups="base.user_admin"/>
+                    </group>
+                    <group>
+                        <group string="Armi">
+                            <group string="Warrior">
+                                <field name="swords_spec" widget="progressbar"
+                                       attrs="{'invisible': [('swords_spec', '=', 0)]}"/>
+                                <field name="axes_spec" widget="progressbar"
+                                       attrs="{'invisible': [('axes_spec', '=', 0)]}"/>
+                                <field name="gloves_spec" widget="progressbar"
+                                       attrs="{'invisible': [('gloves_spec', '=', 0)]}"/>
+                                <field name="maces_spec" widget="progressbar"
+                                       attrs="{'invisible': [('maces_spec', '=', 0)]}"/>
+                                <field name="hammers_spec" widget="progressbar"
+                                       attrs="{'invisible': [('hammers_spec', '=', 0)]}"/>
+                                <field name="xbows_spec" widget="progressbar"
+                                       attrs="{'invisible': [('xbows_spec', '=', 0)]}"/>
+                            </group>
+                            <group string="Hunter">
+                                <field name="bows_spec" widget="progressbar"
+                                       attrs="{'invisible': [('bows_spec', '=', 0)]}"/>
+                                <field name="natures_spec" widget="progressbar"
+                                       attrs="{'invisible': [('natures_spec', '=', 0)]}"/>
+                                <field name="quarterstaffs_spec" widget="progressbar"
+                                       attrs="{'invisible': [('quarterstaffs_spec', '=', 0)]}"/>
+                                <field name="daggers_spec" widget="progressbar"
+                                       attrs="{'invisible': [('daggers_spec', '=', 0)]}"/>
+                                <field name="spears_spec" widget="progressbar"
+                                       attrs="{'invisible': [('spears_spec', '=', 0)]}"/>
+                            </group>
+                            <group string="Mage">
+                                <field name="fires_spec" widget="progressbar"
+                                       attrs="{'invisible': [('fires_spec', '=', 0)]}"/>
+                                <field name="holys_spec" widget="progressbar"
+                                       attrs="{'invisible': [('holys_spec', '=', 0)]}"/>
+                                <field name="frosts_spec" widget="progressbar"
+                                       attrs="{'invisible': [('frosts_spec', '=', 0)]}"/>
+                                <field name="arcanes_spec" widget="progressbar"
+                                       attrs="{'invisible': [('arcanes_spec', '=', 0)]}"/>
+                                <field name="curseds_spec" widget="progressbar"
+                                       attrs="{'invisible': [('curseds_spec', '=', 0)]}"/>
+                            </group>
+                        </group>
+                        <group string="Armature">
+                            <group string="Tessuto">
+                                <field name="cloth_armors_spec" widget="progressbar"
+                                       attrs="{'invisible': [('cloth_armors_spec', '=', 0)]}"/>
+                                <field name="cloth_helmets_spec" widget="progressbar"
+                                       attrs="{'invisible': [('cloth_helmets_spec', '=', 0)]}"/>
+                                <field name="cloth_shoes_spec" widget="progressbar"
+                                       attrs="{'invisible': [('cloth_shoes_spec', '=', 0)]}"/>
+                            </group>
+                            <group string="Pelle">
+                                <field name="leather_armors_spec" widget="progressbar"
+                                       attrs="{'invisible': [('leather_armors_spec', '=', 0)]}"/>
+                                <field name="leather_helmets_spec" widget="progressbar"
+                                       attrs="{'invisible': [('leather_helmets_spec', '=', 0)]}"/>
+                                <field name="leather_shoes_spec" widget="progressbar"
+                                       attrs="{'invisible': [('leather_shoes_spec', '=', 0)]}"/>
+                            </group>
+                            <group string="Metallo">
+                                <field name="plate_armors_spec" widget="progressbar"
+                                       attrs="{'invisible': [('plate_armors_spec', '=', 0)]}"/>
+                                <field name="plate_helmets_spec" widget="progressbar"
+                                       attrs="{'invisible': [('plate_helmets_spec', '=', 0)]}"/>
+                                <field name="plate_shoes_spec" widget="progressbar"
+                                       attrs="{'invisible': [('plate_shoes_spec', '=', 0)]}"/>
+                            </group>
+                            <group string="Offhand">
+                                <field name="shields_spec" widget="progressbar"
+                                       attrs="{'invisible': [('shields_spec', '=', 0)]}"/>
+                                <field name="offhands_spec" widget="progressbar"
+                                       attrs="{'invisible': [('offhands_spec', '=', 0)]}"/>
+                                <field name="channelers_spec" widget="progressbar"
+                                       attrs="{'invisible': [('channelers_spec', '=', 0)]}"/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="specs_page" string="Specs">
+                            <field name="specs" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="equipment_id"/>
+                                    <field name="level"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="activity_levels_page" string="Livelli Attività">
+                            <field name="activity_levels" nolabel="1">
+                                <tree create="false" editable="bottom">
+                                    <field name="activity_id"/>
+                                    <field name="attendances"/>
+                                    <field name="level" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="notes_page" string="Note" groups="base.user_admin">
+                            <field name="notes" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="albion_base.char_list">
+            <field name="name">albion_base_char_list</field>
+            <field name="model">albion_base.character</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="gold"/>
+                    <field name="specs" widget="many2many_tags"/>
+                    <field name="activity_levels" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="albion_base.event_form">
+            <field name="name">albion_base_event_form</field>
+            <field name="model">albion_base.event</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h1 class="d-flex">
+                        <field name="name" placeholder="Nome Evento"/>
+                    </h1>
+                    <group>
+                        <field name="activity_id"/>
+                        <field name="date"/>
+                        <field name="attendants">
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <field name="char_id"/>
+                                        <field name="gold_value"/>
+                                        <field name="computed"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                            <tree editable="bottom">
+                                <field name="char_id"/>
+                                <field name="gold_value"/>
+                                <field name="computed" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="albion_base.event_list">
+            <field name="name">albion_base_event_list</field>
+            <field name="model">albion_base.event</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="activity_id"/>
+                    <field name="attendants_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="albion_base.update_gold_wizard">
+            <field name="name">albion_base_update_gold_wizard</field>
+            <field name="model">albion_base.update_gold_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="gold"/>
+                            <field name="char_id" invisible="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="update_gold" string="Aggiorna" type="object" class="btn btn-primary"/>
+                        <button special="cancel" string="Annulla" class="btn btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

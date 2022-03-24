@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_albion_base_character,albion_base.character,model_albion_base_character,base.group_user,1,1,1,1
+access_albion_base_equipment,albion_base.equipment,model_albion_base_equipment,base.group_user,1,1,1,1
+access_albion_base_activity,albion_base.activity,model_albion_base_activity,base.group_user,1,1,1,1
+access_albion_base_char_spec,albion_base.char_spec,model_albion_base_char_spec,base.group_user,1,1,1,1
+access_albion_base_activity_level,albion_base.activity_level,model_albion_base_activity_level,base.group_user,1,1,1,1
+access_albion_base_event,albion_base.event,model_albion_base_event,base.group_user,1,1,1,1
+access_albion_base_event_attendant,albion_base.event_attendant,model_albion_base_event_attendant,base.group_user,1,1,1,1

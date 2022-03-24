@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="albion_base.action_char">
+            <field name="name">Personaggi</field>
+            <field name="res_model">albion_base.character</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="albion_base.action_equipment">
+            <field name="name">Equipaggiamenti</field>
+            <field name="res_model">albion_base.equipment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="albion_base.action_activity">
+            <field name="name">Attività</field>
+            <field name="res_model">albion_base.activity</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="albion_base.action_event">
+            <field name="name">Eventi</field>
+            <field name="res_model">albion_base.event</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="albion_base.action_my_char">
+            <field name="name">Il mio Personaggio</field>
+            <field name="res_model">albion_base.character</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('user_id', '=', uid)]</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="Albion Guild Manager" id="albion_base.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Personaggi" id="albion_base.menu_char" parent="albion_base.menu_root"
+                  action="albion_base.action_char"/>
+        <menuitem name="Eventi" id="albion_base.menu_event" parent="albion_base.menu_root"
+                  action="albion_base.action_event"/>
+        <menuitem name="Configurazioni" id="albion_base.menu_conf" parent="albion_base.menu_root"
+                  />
+        <menuitem name="Il mio Personaggio" id="albion_base.menu_my_char" parent="albion_base.menu_root"
+                  action="albion_base.action_my_char" sequence="99"/>
+
+        <!-- actions -->
+
+        <menuitem name="Equipaggiamenti" id="albion_base.menu_open_equipment" parent="albion_base.menu_conf"
+                  action="albion_base.action_equipment"/>
+        <menuitem name="Attività" id="albion_base.menu_open_activitie" parent="albion_base.menu_conf"
+                  action="albion_base.action_activity"/>
+    </data>
+</odoo>
